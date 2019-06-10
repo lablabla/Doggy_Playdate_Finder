@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1081561715197",
+    "firebase_url": "https://doggy-playdate-finder.firebaseio.com",
+    "project_id": "doggy-playdate-finder",
+    "storage_bucket": "doggy-playdate-finder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081561715197:android:c1f269a954ca8bc1",
+        "android_client_info": {
+          "package_name": "com.lablabla.doggyplaydatefinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081561715197-v5gajirppamdbpgmmj2tpesh6afj2qag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lablabla.doggyplaydatefinder",
+            "certificate_hash": "a4d52a04ab458f52f9589384b157313e9a7be895"
+          }
+        },
+        {
+          "client_id": "1081561715197-kdd848bkvnerjrjukoomlu4nu1l5q979.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApCeJN8_GRvu6mvyvr23ETuP3svxbLWcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081561715197-kdd848bkvnerjrjukoomlu4nu1l5q979.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
