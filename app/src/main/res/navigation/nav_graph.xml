@@ -2,8 +2,66 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
-            app:startDestination="@id/userFragment">
+            app:startDestination="@id/navigation_splash">
 
-    <fragment android:id="@+id/userFragment" android:name="com.lablabla.doggyplaydatefinder.fragments.UserFragment"
-              android:label="fragment_user" tools:layout="@layout/fragment_user"/>
+    <fragment android:name="com.lablabla.doggyplaydatefinder.fragments.UserFragment"
+              android:label="fragment_user"
+              tools:layout="@layout/fragment_user"
+              android:id="@+id/navigation_user"/>
+
+    <fragment android:id="@+id/navigation_map"
+              android:name="com.lablabla.doggyplaydatefinder.fragments.MapFragment"
+              android:label="fragment_map"
+              tools:layout="@layout/fragment_map"/>
+    <fragment
+            android:id="@+id/navigation_friends"
+            android:name="com.lablabla.doggyplaydatefinder.fragments.FriendsFragment"
+            android:label="FriendsFragment"/>
+    <fragment
+            android:id="@+id/navigation_splash"
+            android:name="com.lablabla.doggyplaydatefinder.fragments.SplashScreenFragment"
+            android:label="fragment_splash_screen"
+            tools:layout="@layout/fragment_splash_screen">
+        <action
+                android:id="@+id/action_navigation_splash_to_navigation_login"
+                app:destination="@id/navigation_login"
+                app:popUpTo="@+id/navigation_splash"
+                app:popUpToInclusive="true"
+                app:launchSingleTop="true"/>
+        <action
+                android:id="@+id/action_navigation_splash_to_navigation_friends"
+                app:destination="@id/navigation_friends"
+                app:popUpTo="@+id/navigation_splash"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_login"
+            android:name="com.lablabla.doggyplaydatefinder.fragments.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+        <action
+                android:id="@+id/action_loginFragment_to_registerFragment"
+                app:destination="@id/navigation_register"
+                app:popUpTo="@+id/navigation_register"/>
+        <action
+                android:id="@+id/action_loginFragment_to_navigation_friends"
+                app:destination="@id/navigation_friends"
+                app:popUpTo="@+id/navigation_login"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+            android:id="@+id/navigation_register"
+            android:name="com.lablabla.doggyplaydatefinder.fragments.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/activity_register">
+        <action
+                android:id="@+id/action_registerFragment_to_loginFragment"
+                app:destination="@id/navigation_login"
+                app:popUpTo="@+id/navigation_login"/>
+        <action
+                android:id="@+id/action_registerFragment_to_navigation_friends"
+                app:destination="@id/navigation_friends"
+                app:popUpTo="@+id/navigation_register"
+                app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

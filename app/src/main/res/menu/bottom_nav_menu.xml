@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:id="@+id/navigation_friends"
+          android:icon="@drawable/common_google_signin_btn_icon_dark"
+          android:title="Friends"/>
     <item
             android:id="@+id/navigation_user"
             android:icon="@drawable/ic_home_black_24dp"
