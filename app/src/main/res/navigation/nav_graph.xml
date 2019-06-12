@@ -53,7 +53,7 @@
             android:id="@+id/navigation_register"
             android:name="com.lablabla.doggyplaydatefinder.fragments.RegisterFragment"
             android:label="fragment_register"
-            tools:layout="@layout/activity_register">
+            tools:layout="@layout/fragment_register">
         <action
                 android:id="@+id/action_registerFragment_to_loginFragment"
                 app:destination="@id/navigation_login"

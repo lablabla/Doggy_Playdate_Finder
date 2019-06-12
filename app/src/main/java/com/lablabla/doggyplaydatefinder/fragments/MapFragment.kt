@@ -12,7 +12,7 @@ import com.lablabla.doggyplaydatefinder.R
 import com.lablabla.doggyplaydatefinder.activities.MainActivity
 import com.lablabla.doggyplaydatefinder.models.User
 
-class MapFragment : Fragment() {
+class MapFragment : FragmentWithMenu(R.id.navigation_map) {
     private lateinit var mUser : User
 
     override fun onCreateView(

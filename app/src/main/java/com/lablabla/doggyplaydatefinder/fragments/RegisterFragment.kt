@@ -1,23 +1,23 @@
 package com.lablabla.doggyplaydatefinder.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.lablabla.doggyplaydatefinder.R
-import com.lablabla.doggyplaydatefinder.activities.MainActivity
 import com.lablabla.doggyplaydatefinder.models.User
 
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment : Fragment() {
 
@@ -26,10 +26,15 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreate(savedInstanceState)
-        val view = inflater.inflate(R.layout.activity_register, container, false)
-        val button: Button = view.findViewById<Button>(R.id.button_register)
+        val view = inflater.inflate(R.layout.fragment_register, container, false)
+        val button = view.findViewById<Button>(R.id.button_register)
         button.setOnClickListener {
             register()
+        }
+
+        val loginTextView = view.findViewById<TextView>(R.id.register_login_textView)
+        loginTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
         return view
     }
@@ -70,7 +75,11 @@ class RegisterFragment : Fragment() {
 
     private fun switchToMain(user: User) {
         Log.d("Login", "Switching to friends with user ${user.UID}")
-        findNavController().navigate(R.id.navigation_friends)
+        findNavController().navigate(R.id.navigation_friends,
+            null,
+            NavOptions.Builder()
+                .setPopUpTo(R.id.navigation_friends, true)
+                .build())
     }
 
 }

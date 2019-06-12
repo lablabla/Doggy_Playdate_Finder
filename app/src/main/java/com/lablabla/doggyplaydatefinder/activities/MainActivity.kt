@@ -36,12 +36,14 @@ class MainActivity : AppCompatActivity() {
         navView = findViewById(R.id.nav_view)
         controller = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(controller)
-        controller.addOnDestinationChangedListener { controller, destination, arguments ->
+        controller.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navigation_friends, R.id.navigation_user, R.id.navigation_map -> showBottomNavigation()
                 else -> hideBottomNavigation()
             }
         }
+        // Setup bottom navigation as hidden
+        navView.visibility = View.GONE
     }
 
     private fun hideBottomNavigation() {

@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -16,7 +18,18 @@ import com.lablabla.doggyplaydatefinder.R
 import com.lablabla.doggyplaydatefinder.activities.MainActivity
 import com.lablabla.doggyplaydatefinder.models.User
 
-class SplashScreenFragment : Fragment() {
+class SplashScreenFragment : Fragment(), FirebaseAuth.AuthStateListener {
+    override fun onAuthStateChanged(it: FirebaseAuth) {
+        FirebaseAuth.getInstance().removeAuthStateListener(this)
+        val user = it.currentUser
+        if (user != null) {
+            FirebaseDatabase.getInstance().reference.child("users").child(user.uid)
+                .addListenerForSingleValueEvent(getUserListener)
+        }
+        else
+        {
+            switchToFragment(Fragments.Login)
+        }    }
 
     enum class Fragments
     {
@@ -57,7 +70,11 @@ class SplashScreenFragment : Fragment() {
             Fragments.Main -> R.id.action_navigation_splash_to_navigation_friends
             Fragments.Login -> R.id.action_navigation_splash_to_navigation_login
         }
-        findNavController().navigate(id)
+        findNavController().navigate(id,
+            null,
+            NavOptions.Builder()
+                .setPopUpTo(R.id.navigation_splash, true)
+                .build())
 
     }
 
@@ -72,18 +89,9 @@ class SplashScreenFragment : Fragment() {
 
         } ?: throw Exception("Invalid Activity")
 
+
         FirebaseAuth.getInstance()
-        .addAuthStateListener {
-            val user = it.currentUser
-            if (user != null) {
-                FirebaseDatabase.getInstance().reference.child("users").child(user.uid)
-                    .addListenerForSingleValueEvent(getUserListener)
-            }
-            else
-            {
-                switchToFragment(Fragments.Login)
-            }
-        }
+        .addAuthStateListener(this)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash_screen, container, false)
 

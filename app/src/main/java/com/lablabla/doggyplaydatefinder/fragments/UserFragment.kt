@@ -12,7 +12,7 @@ import com.lablabla.doggyplaydatefinder.R
 import com.lablabla.doggyplaydatefinder.activities.MainActivity
 import com.lablabla.doggyplaydatefinder.models.User
 
-class UserFragment : Fragment() {
+class UserFragment : FragmentWithMenu(R.id.navigation_user) {
 
     private lateinit var mUser : User
     override fun onCreateView(

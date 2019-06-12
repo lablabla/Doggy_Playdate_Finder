@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.lablabla.doggyplaydatefinder.R
 import com.lablabla.doggyplaydatefinder.activities.MainActivity
 import android.view.*
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -15,32 +16,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.lablabla.doggyplaydatefinder.models.User
 
 
-class FriendsFragment : Fragment() {
+class FriendsFragment : FragmentWithMenu(R.id.navigation_friends) {
 
 
     private lateinit var mUser : User
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.action_bar_menu_logged_in, menu)
-
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId)
-        {
-            R.id.menu_logout ->
-            {
-                FirebaseAuth.getInstance().signOut()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
